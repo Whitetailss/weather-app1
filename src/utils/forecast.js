@@ -26,7 +26,15 @@ request( {url: url, json: true }, (error,response) => {
 
     const data = response.body.current
 
-    const {weather_descriptions, temperature, feelslike} = data
+    const {weather_descriptions, temperature, feelslike, humidity, precip} = data
+
+    let bringUmbrella = ''
+
+    if (precip > 0){
+        bringUmbrella = `You should bring an umbrella because chances of rain is ${precip} %`
+    } else {
+        bringUmbrella = `Umbrella not needed, enjoy your hands free!`
+    }
 
     if (error) {
         callback('Unable to connect to location services', undefined)
@@ -36,8 +44,10 @@ request( {url: url, json: true }, (error,response) => {
 
         callback(undefined, 
 
-         (`${weather_descriptions}: temperature is ${temperature}, it feels like ${feelslike}` )
+         (`${weather_descriptions}: Temperature is ${temperature}, it feels like ${feelslike}, humidity is ${humidity}. ${bringUmbrella}`)
         )
+
+        console.log(response.body.current)
     } 
 })
 }
