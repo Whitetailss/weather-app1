@@ -44,7 +44,7 @@ request( {url: url, json: true }, (error,response) => {
 
         callback(undefined, 
 
-         (`${weather_descriptions}: Temperature is ${temperature}, it feels like ${feelslike}, humidity is ${humidity}. ${bringUmbrella}`)
+         (`${weather_descriptions}: Temperature dfdis ${temperature}, it feels like ${feelslike}, humidity is ${humidity}. ${bringUmbrella}`)
         )
 
         console.log(response.body.current)
